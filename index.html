@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chant & Banner Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <h1>Code the Cup 🏆</h1>
+        <p>AI Chant & Banner Creator</p>
+      </header>
+
+      <main>
+        <section class="input-section">
+          <form id="generator-form">
+            <div class="form-group">
+              <label for="team">Your Team</label>
+              <input type="text" id="team" placeholder="e.g., Argentina, Arsenal" required />
+            </div>
+            <div class="form-group">
+              <label for="opponent">Opponent</label>
+              <input type="text" id="opponent" placeholder="e.g., Brazil, Tottenham" required />
+            </div>
+            <div class="form-group">
+              <label for="player">Star Player (Optional)</label>
+              <input type="text" id="player" placeholder="e.g., Messi, Saka" />
+            </div>
+            <div class="form-group">
+              <label for="vibe">Crowd Vibe</label>
+              <select id="vibe" required>
+                <option value="Passionate">Passionate & Proud</option>
+                <option value="Intimidating">Intimidating & Loud</option>
+                <option value="Funny">Funny & Cheeky</option>
+                <option value="Historic">Historic & Traditional</option>
+              </select>
+            </div>
+            <button type="submit" id="generate-btn">Generate Vibe</button>
+          </form>
+        </section>
+
+        <section class="result-section hidden" id="result-section">
+          <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Gemini is feeling the crowd energy...</p>
+          </div>
+          <div class="output hidden" id="output">
+            <h2 style="font-size: 1.5rem; color: #fff; margin-bottom: 1.5rem;">Your Stadium Vibe</h2>
+            
+            <div style="max-width: 600px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; gap: 2rem;">
+              
+              <!-- Image Attachment Building Block -->
+              <div>
+                <h3 style="margin-bottom: 0.8rem; color: #ff0055; font-size: 1.2rem;">🖼️ Graphic Attachment</h3>
+                <div class="virtual-banner" id="virtual-banner" style="background: linear-gradient(135deg, #111, #333); border-radius: 16px; padding: 3rem 2rem; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); position: relative; overflow: hidden; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border: 2px solid rgba(255,255,255,0.1); box-shadow: 0 10px 20px rgba(0,0,0,0.3);">
+                  <h2 id="banner-team">Team Name</h2>
+                  <div class="chant-box">
+                    <p id="chant-text">Chant goes here</p>
+                  </div>
+                </div>
+                <!-- Play Chant Audio Block -->
+                <div style="margin-top: 1.5rem; display: flex; justify-content: center;">
+                  <button id="play-chant-btn" class="hidden" style="padding: 0.75rem 2rem; background: #ff0055; color: #fff; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 10px rgba(255,0,85,0.3); font-size: 1.1rem;">🔊 Play Chant Audio</button>
+                </div>
+              </div>
+              
+              <!-- Caption Building Block -->
+              <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px;">
+                <h3 style="margin-bottom: 0.8rem; color: #00b8ff; font-size: 1.2rem;">📝 Generated Caption</h3>
+                <p id="social-text" style="color: #fff; font-size: 1rem; line-height: 1.5; margin: 0;"></p>
+              </div>
+
+              <!-- Social Media Export Placeholders -->
+              <div style="margin-top: 1rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <h3 style="margin-bottom: 1rem; color: #fff; font-size: 1.1rem;">📤 One-Click Export (Coming in V2)</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                  <div style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.05); color: #888; border: 1px dashed rgba(255,255,255,0.2); border-radius: 20px; font-weight: bold; cursor: not-allowed;">📸 Instagram</div>
+                  <div style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.05); color: #888; border: 1px dashed rgba(255,255,255,0.2); border-radius: 20px; font-weight: bold; cursor: not-allowed;">🐦 X (Twitter)</div>
+                  <div style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.05); color: #888; border: 1px dashed rgba(255,255,255,0.2); border-radius: 20px; font-weight: bold; cursor: not-allowed;">📘 Facebook</div>
+                  <div style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.05); color: #888; border: 1px dashed rgba(255,255,255,0.2); border-radius: 20px; font-weight: bold; cursor: not-allowed;">🎵 TikTok</div>
+                </div>
+              </div>
+
+            </div>
+            <div class="extras" id="extras" style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; text-align: left;">
+              <div class="banner-concept" style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px;">
+                <h3 style="margin-bottom: 0.5rem; color: #00ff88; font-size: 1.2rem;">🎨 AI Image Prompt (For Banner/Tifo)</h3>
+                <p id="concept-text" style="line-height: 1.5; font-size: 1rem;"></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
