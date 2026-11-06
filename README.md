@@ -44,8 +44,8 @@ No matter what happens, the app never crashes—it always delivers the hype!
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/syedn44/CODE_THE_CUP_HACKATHON.git
-   cd CODE_THE_CUP_HACKATHON
+   git clone https://github.com/syedn44/code_the_cup_hackathon.git
+   cd code_the_cup_hackathon
    ```
 
 2. **Install dependencies:**
