@@ -12,7 +12,6 @@
     "vite": "^8.1.1"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.24.1",
-    "xlsx": "^0.18.5"
+    "@google/generative-ai": "^0.24.1"
   }
 }
